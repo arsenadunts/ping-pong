@@ -13,7 +13,7 @@ function game() {
         directionY: 1
     };
 
-var paddleA = {
+    var paddleA = {
         speed: 3,
         x1: $("#paddleA").position().left,
         x2: $("#paddleA").position().left + $("#paddleA").width(),
@@ -38,6 +38,7 @@ var paddleA = {
     // Main loop of the game
     function gameLoop() {
         moveBall();
+        movepaddle();
     }
 
 
@@ -66,27 +67,59 @@ var paddleA = {
             ball.directionX = 1
         }
 
-      
 
-    
+        if (ball.x + ball.speed * ball.directionX < paddleA.x2 &&
+            ball.y + ball.speed * ball.directionY > paddleA.y1 &&
+            ball.y + ball.speed * ball.directionY < paddleA.y2) {
+            ball.directionX = 1
+        }
 
-    if (ball.x + ball.speed * ball.directionX < paddleA.x2) {
-        ball.y + ball.speed * ball.directionY > paddleA.y1 && ball.y + ball.speed * ball.directionY < paddleA.y2
-        ball.directionX = 1
-    if (ball.y + ball.speed * ball.directionY < paddleA.y2) {
-        ball.y + ball.speed * ball.directionY > paddleA.y1 && ball.x + ball.speed * ball.directionY < paddleA.y2
-        ball.directionX = -1
 
-    }
-    }
+        if (ball.x + ball.speed * ball.directionX + $("#ball").width() > paddleB.x2 &&
+            ball.y + ball.speed * ball.directionY > paddleB.y1 &&
+            ball.y + ball.speed * ball.directionY < paddleB.y2) {
+            ball.directionX = -1
 
-      // Update ball position on X and Y axes based on speed and orientation
+        }
+
+        // Update ball position on X and Y axes based on speed and orientation
         ball.x += ball.speed * ball.directionX;
         ball.y += ball.speed * ball.directionY;
 
         // Render the updated ball position
         $("#ball").css({ "left": ball.x, "top": ball.y });
-    };
 
+    }
 
+    $('html').keyup(stop).keydown(charMovement);
+
+    function charMovement(e) {
+        directions[e.which] = true;
+        console.log(directions)
+    }
+
+    function stop(e) {
+        delete directions[e.which];
+        console.log(directions)
+    }
+
+    var directions = {};
+
+    function movepaddle() {
+
+        var speed = 4;
+
+        function move(e) {
+            for (var i in directions) {
+
+                if (paddleA.y1 > 0 && i == 38) {
+                    $("paddleA").css("top", (paddleA.y1 - speed) + "px");
+                }
+
+                if (position().top < ($("#map").height() - height()) && i == 40) {
+                    css("top", (position().top + speed) + "px");
+                }
+            }
+        }
+    }
 }
