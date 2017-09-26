@@ -116,7 +116,7 @@ function game() {
                     $("paddleA").css("top", (paddleA.y1 - speed) + "px");
                 }
 
-                if (position().top < ($("#map").height() - height()) && i == 40) {
+                if (paddleA.y1().top < ($("#map").height() - height()) && i == 40) {
                     css("top", (position().top + speed) + "px");
                 }
             }
