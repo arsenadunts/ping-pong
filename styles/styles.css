@@ -1,0 +1,43 @@
+#game {
+  background: green;
+  width: 600px;
+  height: 300px;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+#ball {
+  background: yellow;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 290px;
+  top: 140px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+#paddleA {
+  background: blue;
+  position: relative;
+  width: 8px;
+  height: 50;
+  left: 10;
+  top: 100px;
+  border-radius: 10px;
+  border: 1px solid blue;
+}
+
+#paddleB {
+  background: red;
+  position: relative;
+  width: 8px;
+  height: 50px;
+  left: 550px;
+  top: 50px;
+  border-radius: 10px;
+  border: 1px solid red;
+}
