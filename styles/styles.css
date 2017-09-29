@@ -22,7 +22,7 @@
 
 #paddleA {
   background: blue;
-  position: relative;
+  position: absolute;
   width: 8px;
   height: 100;
   left: 10;
@@ -33,7 +33,7 @@
 
 #paddleB {
   background: red;
-  position: relative;
+  position: absolute;
   width: 8px;
   height: 100px;
   left: 550px;
